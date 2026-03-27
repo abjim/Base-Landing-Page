@@ -1,0 +1,92 @@
+CREATE TABLE IF NOT EXISTS orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
+    status ENUM('PENDING', 'PAID', 'REFUNDED', 'CANCELLED') DEFAULT 'PENDING',
+    gateway VARCHAR(50) NOT NULL,
+    transaction_id VARCHAR(100) DEFAULT NULL,
+    payment_url TEXT DEFAULT NULL,
+    download_count INT DEFAULT 0,
+    profession VARCHAR(100) DEFAULT NULL,
+    age INT DEFAULT NULL,
+    location VARCHAR(255) DEFAULT NULL,
+    dob DATE DEFAULT NULL,
+    reading_status VARCHAR(50) DEFAULT 'Not Started',
+    feedback TEXT DEFAULT NULL,
+    rating INT DEFAULT NULL,
+    admin_notes TEXT DEFAULT NULL,
+    last_followup_level INT DEFAULT 0,
+    coupon_code VARCHAR(50) DEFAULT NULL,
+    discount_amount DECIMAL(10,2) DEFAULT 0.00,
+    upsell_items JSON DEFAULT NULL,
+    payment_date DATETIME DEFAULT NULL,
+    affiliate_code VARCHAR(255) DEFAULT NULL,
+    commission_amount DECIMAL(10,2) DEFAULT 0.00,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS settings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    setting_key VARCHAR(50) UNIQUE NOT NULL,
+    setting_value TEXT,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS coupons (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    code VARCHAR(50) NOT NULL UNIQUE,
+    type ENUM('fixed', 'percent') NOT NULL DEFAULT 'fixed',
+    amount DECIMAL(10,2) NOT NULL,
+    expiry_date DATE DEFAULT NULL,
+    usage_limit INT DEFAULT -1,
+    usage_count INT DEFAULT 0,
+    status ENUM('ACTIVE', 'INACTIVE') DEFAULT 'ACTIVE',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS products (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    type ENUM('main', 'upsell') NOT NULL DEFAULT 'upsell',
+    name VARCHAR(255) NOT NULL,
+    price DECIMAL(10,2) DEFAULT 0.00,
+    regular_price DECIMAL(10,2) DEFAULT NULL,
+    image_url VARCHAR(255) DEFAULT NULL,
+    file_url VARCHAR(255) DEFAULT NULL,
+    description TEXT DEFAULT NULL,
+    status ENUM('ACTIVE', 'INACTIVE') DEFAULT 'ACTIVE',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS automation_logs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT,
+    name VARCHAR(255),
+    phone VARCHAR(50),
+    action_type VARCHAR(50),
+    message TEXT,
+    status VARCHAR(50) DEFAULT 'SENT',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS api_keys (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    client_name VARCHAR(100) NOT NULL,
+    api_key VARCHAR(64) NOT NULL UNIQUE,
+    status ENUM('ACTIVE', 'REVOKED') DEFAULT 'ACTIVE',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS admins (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    phone VARCHAR(20) DEFAULT NULL,
+    password_hash VARCHAR(255) DEFAULT NULL,
+    role ENUM('SUPER_ADMIN', 'ACCOUNTS', 'SALES') DEFAULT 'SALES',
+    status ENUM('ACTIVE', 'INACTIVE') DEFAULT 'ACTIVE',
+    reset_token VARCHAR(100) DEFAULT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <title>অর্গানিক স্কিন কেয়ার - বিজনেস ব্লুপ্রিন্ট - Shehzin</title>
+    <meta name="description" content="অর্গানিক স্কিন কেয়ার - বিজনেস ব্লুপ্রিন্ট | রায়হান পাটোয়ারী">
+    <meta name="theme-color" content="#020617">
+    <link rel="icon" type="image/x-icon" href="https://organic.shehzin.com/uploads/1.jpg">
+    <link rel="shortcut icon" type="image/x-icon" href="https://organic.shehzin.com/uploads/1.jpg">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://organic.shehzin.com/">
+    <meta property="og:title" content="অর্গানিক স্কিন কেয়ার - বিজনেস ব্লুপ্রিন্ট - Shehzin">
+    <meta property="og:description" content="অর্গানিক স্কিন কেয়ার - বিজনেস ব্লুপ্রিন্ট | রায়হান পাটোয়ারী">
+    <meta property="og:image" content="https://organic.shehzin.com/uploads/1.jpg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Optimized Font Loading -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Hind Siliguri"', '"Noto Sans Bengali"', 'sans-serif'],
+            },
+            colors: {
+              brand: {
+                ivory: '#FDFBF7',
+                cream: '#F4F1EA',
+                sage: '#8BA888',
+                olive: '#556B2F',
+                leaf: '#4A5D23',
+                brown: '#8B5A2B',
+                clay: '#D2B48C',
+                charcoal: '#2D3748',
+                text: '#1F2937',
+                light: '#FFFFFF'
+              }
+            },
+            animation: {
+              'float': 'float 6s ease-in-out infinite',
+              'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'shine': 'shine 1.5s infinite',
+              'marquee': 'marquee 25s linear infinite',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
+              },
+              shine: {
+                '0%': { transform: 'translateX(-100%)' },
+                '100%': { transform: 'translateX(100%)' }
+              },
+              marquee: {
+                '0%': { transform: 'translateX(0%)' },
+                '100%': { transform: 'translateX(-50%)' }
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-family: 'Hind Siliguri', 'Noto Sans Bengali', sans-serif;
+        background-color: #FDFBF7;
+        color: #2D3748;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+      .bg-grid {
+        background-size: 40px 40px;
+        background-image: linear-gradient(to right, rgba(85, 107, 47, 0.1) 1px, transparent 1px),
+                          linear-gradient(to bottom, rgba(85, 107, 47, 0.1) 1px, transparent 1px);
+        mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+      }
+      .glass-card {
+        background: rgba(253, 251, 247, 0.8);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(85, 107, 47, 0.1);
+      }
+      .perspective-1000 { perspective: 1000px; }
+      .rotate-y-12 { transform: rotateY(12deg); }
+      
+      /* Mobile optimization for marquee performance */
+      .animate-marquee {
+        will-change: transform;
+      }
+      
+      /* Accessibility: Focus styles */
+      :focus-visible {
+        outline: 2px solid #556B2F;
+        outline-offset: 4px;
+      }
+
+      /* Fix date picker icon in dark mode */
+      ::-webkit-calendar-picker-indicator {
+          filter: invert(0);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0",
+    "recharts": "https://esm.sh/recharts@2.12.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

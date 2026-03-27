@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Pass X-API-KEY header to PHP environment variable HTTP_X_API_KEY
+    RewriteCond %{HTTP:X-API-KEY} .
+    RewriteRule .* - [E=HTTP_X_API_KEY:%{HTTP:X-API-KEY}]
+    
+    # Pass Authorization header (good practice for API)
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+</IfModule>
